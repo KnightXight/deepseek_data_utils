@@ -36,7 +36,7 @@
 - 自动检测文件编码
 - 两个函数
   - `get_df` 从任意文件获取DataFrame
-  - `write_df` 将获取到的DataFrame写入指定格式文件
+  - `write_df` 将获取到的DataFrame写入指定格式文件，一定是pandas可处理的DataFrame！
 
 ```shell
 python file_transform.py -h
@@ -58,6 +58,7 @@ python show_line.py --input input_file --index line_index
 ### 3.3 `parallel_query.py`
 
 > 放弃多轮的迭代调用，如有需要请自行更改代码，
+> 将config放到了外部文件便于代码管理
 
 - 请预处理数据将需要的历史数据放到一对key/value的字典中。
 - 配套`/config/key.yaml`和`/config/model_config.yaml`文件
