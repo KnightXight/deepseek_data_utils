@@ -1,5 +1,8 @@
 # 简要说明
 
+> 借鉴价值远大于实际使用，可以直接import函数，也可以直接运行脚本，可以借鉴思路，也可以自行调整内容。
+> 请记得调整config文件夹下的配置文件为自己所需，也可以在代码内部直接更改变量，看你喜好和需求。
+
 ## 1. utils结构
 
 ```shell
@@ -54,8 +57,9 @@ python show_line.py --input input_file --index line_index
 
 ### 3.3 `parallel_query.py`
 
-> 暂时放弃多轮的调用，如有需要请自行更改代码，建议预处理数据将需要的历史数据放到一个key/value的字典中。
+> 放弃多轮的迭代调用，如有需要请自行更改代码，
 
+- 请预处理数据将需要的历史数据放到一对key/value的字典中。
 - 配套`/config/key.yaml`和`/config/model_config.yaml`文件
 - 请务必更改`/config/key.yaml`中的`api_key`为自己的API key
 - 请务必更改`/config/model_config.yaml`中的各项参数为自己所需

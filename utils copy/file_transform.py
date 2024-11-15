@@ -3,9 +3,11 @@ import os
 import argparse
 
 def get_df(file_path):
-    end = file_path.split('.')[-1].lower()
+    file_extension = file_path.split('.')[-1].lower()
     if file_extension == 'jsonl':
         return pd.read_json(file_path, lines=True)
+    if file_extension == 'xlsx':
+        return pd.read_excel(file_path)
     try:
         read_func = getattr(pd, f'read_{file_extension}')
         df = read_func(file_path)
@@ -17,12 +19,15 @@ def write_df(df, output_path):
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     end = output_path.split('.')[-1].lower()
     if end == 'jsonl':
-        df.to_json(output_path, orient='records', lines=True, ensure_ascii=False)
-    try:
-        write_func = getattr(df, f'to_{end}')
-        write_func(output_path, index=False)
-    except AttributeError:
-        raise ValueError(f"不支持的文件格式: {end}")
+        df.to_json(output_path, orient='records', lines=True, force_ascii=False)
+    elif end == 'xlsx':
+        df.to_excel(output_path, index=False)
+    else:
+        try:
+            write_func = getattr(df, f'to_{end}')
+            write_func(output_path, index=False)
+        except AttributeError:
+            raise ValueError(f"不支持的文件格式: {end}")
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()

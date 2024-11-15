@@ -1,0 +1,35 @@
+# hyperparameters for model
+# 需要换行的文本请使用英文半角符 | 与正确的缩进进行换行
+
+model: azure-gpt-4o-2024-08-06
+
+# - deepseek-chat
+# - claude-3-5-sonnet-20241022
+# - azure-gpt-4o-2024-08-06
+
+max_tokens: 1024
+
+temperature: 0.0
+
+num_processes: 2
+
+system_prompt: |
+  你是一个聪明人，帮我做一下分类吧。
+
+# prompt 占位符请使用 {0} {1} {2} 等，代码使用了*进行顺序注入，所以下面的input_columns的列名顺序要和prompt_template的占位符顺序一致
+prompt_template: |
+  ### 任务要求
+  请你对我所给你的真实对话进行分类，判断这段对话是关于哪个话题的。
+  ### 对话内容
+  {0}
+  ### 输出要求
+  请你根据对话内容，判断这段对话是关于哪个话题的，然后选择对应的类别。输出你的思考逻辑和判断结果。
+
+# 以下为数据集的列名，按照你需要跑的的数据集列名填写
+input_columns: # 按prompt_template注入的顺序填写列名
+  - messages
+
+# 暂时放弃
+# history_columns: # 按你提供的一行数据多轮历史的列名填写
+#   - round0
+#   - round1

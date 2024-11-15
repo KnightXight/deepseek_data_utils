@@ -1,0 +1,6 @@
+deepseek:
+  key: 
+  url: https://api.deepseek.com
+openai:
+  key: 
+  url: https://api-openai-us1.deepseek.com:8443/v1
