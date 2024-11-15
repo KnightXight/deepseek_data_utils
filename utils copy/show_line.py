@@ -18,7 +18,7 @@ def show_line(file_path, index):
     
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--input', type=str, help='输入文件路径')
+    parser.add_argument('--input', type=str, help='输入文件路径', default='output.xlsx')
     parser.add_argument('--index', type=int, help='行数', default=0)
     args = parser.parse_args()
     show_line(args.input, args.index)
